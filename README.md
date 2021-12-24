@@ -15,5 +15,5 @@
 - Attribute Binding
   - v-bind:href -> v-bind:{attribue} -> :{attribute}
 
-Vue CDN Used
+Vue CDN Used, 
 Extensions Used: Live Server.
