@@ -1,6 +1,6 @@
-#Vue.js Learning App
+# Vue.js Learning App
 
-##Understanding the basics.,
+## Understanding the basics.,
 
 - Declaratively render data to the DOM using Vue createApp and mounting it
 - v-if
