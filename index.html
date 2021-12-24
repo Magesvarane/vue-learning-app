@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Learning App</title>
+
+  <!-- Using VUE CDN -->
+  <script src="https://unpkg.com/vue@3.2.26"></script>
+  <style>
+    .box {
+      padding: 100px 0;
+      width: 400px;
+      text-align: center;
+      background-color: #ddd;
+      margin: 20px;
+      display: block;
+    }
+    body {
+      background: #eee;
+      max-width: 960px;
+      margin: 20px auto;
+    }
+    ul, p {
+      margin: 17px;
+      padding: 0;
+    }
+    li {
+      list-style-type: none;
+      background: #fff;
+      margin: 20px auto;
+      padding: 10px 20 px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    li.eligible {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Vue.js Learning App</h1>
+
+  <div id="app">
+    <h3>Template Example - Names List</h3>
+
+    <p>{{ name }} - {{ age }}</p>
+
+    <!-- Vue For Example -->
+    <ul>
+      <!-- Dynamic Classes example (key value pair inside the obj) -->
+      <li v-for="person in persons" :class="{ eligible: person.isEligible}" @click="toggleIsEligible(person)">
+        <!-- Attribute Binding example -->
+        <img :src="person.img" :alt="person.name" width="100" height="100">
+        <p>{{ person.name }}</p>
+        <p>{{ person.age }}</p>
+      </li>
+    </ul>
+
+ 
+    <button @click="toggleButtons">
+      <span v-if="showButtons">Hide Buttons</span>
+      <span v-else>Show Buttons</span>
+    </button>
+
+    <!-- v-if and v-show - if removes the element from the DOM, whereas show applies the css display:none if it is false -->
+    <!-- V-show is preferable when it comes to performance -->
+    
+    <div v-show="showButtons" style="margin: 15px 0;">Showing Buttons....</div>
+    <div v-if="showButtons">
+      <button v-on:click="age++">Increase Age</button>
+      <button @click="age--">Decrease Age</button>
+
+      <div @click="changeName">Change name</div>
+    </div>
+
+    <!-- Mouse Events -->
+    </br>
+    <button @click="toggleMouseEvents" style="margin: 15px 0;">
+      <span v-if="showMouseEvents">Hide Mouse Events</span>
+      <span v-else>Show Mouse Events</span>
+    </button>
+    <div v-show="showMouseEvents">
+      <div class="box" @mouseover="handleEvent($event, 50)">Mouse Entering (console.log)</div>
+      <div class="box" @mouseleave="handleEvent">Mouse Leaving</div>
+      <div class="box" @dblclick="handleEvent">Mouse Double Click</div>
+      <div class="box" @mousemove="handleMousemove">Mouse Move Position - {{ x }}, {{ y }}</div>
+    </div>
+
+    <!-- Attribute Binding -->
+    <div style="margin: 15px 0;">
+      <!-- href cannot be replaced with the variable url or {{ url }} -->
+      <!-- <a href="url" >Some Website</a> -->
+      <a v-bind:href="url" >Vue.js Website</a>
+
+    </div>
+
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
